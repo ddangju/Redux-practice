@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
+import Routing from "./routing";
+import { createStore } from "redux";
+import rootReducer from "./redux";
+
+///1. Provider를 감싸주면 그 안에서 상태관리가 가능하다.
+/// 그리고 store을 props로 넘겨주는데 store는 createStore import해서 사용한다.
+///2. createStore의 인자엔 **초기상태값**이 들어간다.
 function App() {
+  const store = createStore(rootReducer);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Routing></Routing>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
