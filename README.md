@@ -11,9 +11,9 @@ redux는 상태관리를 해주는 API이고 `라이브러리`이고 react-redux
 
 ```
 ㄴredux
-  ㄴ index.js
-  ㄴ counter-redux.js 
-  ㄴ basket-redux.js
+  ㄴ index.js   // root reducer
+  ㄴ counter-redux.js  // 기능1
+  ㄴ basket-redux.js  // 기능2 
 ```
 
 `redux`라는 파일을 따로 만들어 그 안에 기능들별로 나누어준다. <br>
@@ -41,3 +41,20 @@ redux는 상태관리를 해주는 API이고 `라이브러리`이고 react-redux
 상태관리하는 store에는 reducer함수가 있는데 이것은 action을 확인하고 state를 변경하는 일을 한다.   
 
 그럼 그 변경된 state값이 view에 반영된다. 
+
+<br>
+
+
+## ::redux API
+
+- createStore: store생성
+- combineReducer: 여러 개의 slice를 결합하여 하나의 root reducer를 만듬
+- applyMiddleware: reducer 이전 순서에서 실행할 middleware를 정의 
+
+
+## :: react-redux API
+
+- Provider : react-app 전체에 제공할 store를 주입하는 장소
+- useSelector : store를 가져오는 역할 (state)
+-  useDispatch: action을 reducer로 보내는 역할(setState)
+
