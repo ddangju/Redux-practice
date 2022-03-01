@@ -19,10 +19,11 @@ const Counter = () => {
   ///dispatch를 통해 상태를 업데이트할수있다.
   // dispatch인자에 리듀서에 전달할 액션객체를 넣어준다
   const onIncrease = () => {
+    // dispatch({ type: "counter/INCREASE" });
     dispatch(increase());
   };
 
-  console.log(counter);
+  console.log();
 
   return (
     <>
