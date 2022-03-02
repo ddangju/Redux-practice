@@ -9,8 +9,7 @@ const rootReducer = combineReducers({
   counter: counter,
   ProductReducer: ProductReducer,
   ProductReducer2: ProductReducer2,
-  // product: product,
-  // product2: product2,
+  // product: { ProductReducer: ProductReducer, ProductReducer2: ProductReducer2 },
 });
 
 export default rootReducer;

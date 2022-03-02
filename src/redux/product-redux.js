@@ -1,41 +1,32 @@
 ///redux에서는 state 데이터의 수정방법을 미리 정의한다.
 //수량 데이터를 수정하는 함수 (reducer)
 let shoesState = [
-  { id: 0, name: "신발", quan: 2 },
-  { id: 1, name: "신발2", quan: 3 },
+  { id: 0, name: "신발", quan: 1 },
+  { id: 1, name: "신발2", quan: 1 },
 ];
 
-let alertState = true;
-function ProductReducer2(state = alertState, action) {
+let 장바구니 = [];
+
+function ProductReducer2(state = 장바구니, action) {
   return state;
 }
 
 function ProductReducer(state = shoesState, action) {
-  if (action.type.increment === "increment") {
+  if (action.type === "increment") {
     ///일단 state복사
     let copy = [...state];
-    copy[action.type.id].quan++;
+    if (copy) copy[action.payload.id].quan++;
     return copy;
-  } else if ((action.type = "decrement")) {
+  } else if (action.type === "decrement") {
     let copy = [...state];
-    if (copy[0].quan <= 0) {
+    if (copy[action.payload.id].quan <= 0) {
       return copy;
     } else {
-      copy[0].quan--;
+      copy[action.payload.id].quan--;
     }
     return copy;
   }
-  // switch (action.type) {
-  //   case Increment.increment:
-  //     console.log(action.type);
-  //     console.log(action, "<<");
-  //   // case type.increment:
-  //   //   let copy = [...state];
-  //   //   copy[action.type.id].quan++;
-  //   //   return { copy };
-  //   default:
-  //     return state;
-  // }
+  return state;
 }
 
 // export default ProductReducer;

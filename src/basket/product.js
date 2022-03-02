@@ -7,9 +7,10 @@ const Product = () => {
   // const [price, setPrice] = useState(0);
   let navigate = useNavigate();
   const product = useSelector((store) => store.ProductReducer);
-  const product2 = useSelector((store) => store.ProductReducer2);
+  // const product2 = useSelector((store) => store.ProductReducer2);
+
+  // const product2 = useSelector((store) => store.product.ProductReducer2);
   const dispatch = useDispatch();
-  console.log(product2, "<product2");
 
   const goBasket = () => {
     navigate("/basket");
@@ -26,21 +27,20 @@ const Product = () => {
               alt="shoes"
             />
             <div>
-              {/* <button className={`button${idx + 1}`} onClick={handleClick}>
-                +
-              </button> */}
               <button
                 onClick={() => {
                   dispatch({
-                    type: { increment: "increment", id: item.id },
+                    type: "increment",
+                    payload: { id: item.id },
                   });
                 }}
               >
                 +
               </button>
+
               <button
                 onClick={() => {
-                  dispatch({ type: "decrement" });
+                  dispatch({ type: "decrement", payload: { id: item.id } });
                 }}
               >
                 -
@@ -48,7 +48,7 @@ const Product = () => {
             </div>
             <h1>{item.name}</h1>
             <h2>{item.quan}</h2>
-            <button onClick={goBasket}>카트바로가기</button>
+            <button onClick={goBasket}>장바구니 바로가기</button>
           </div>
         );
       })}
@@ -58,6 +58,7 @@ const Product = () => {
 
 ////넘어온 store를 props로 변환해주는 함수이다.
 //object를 리턴한다.
+//// 이 함수 대신에 사용할 수 있는 메서드는 useSelector()
 
 // function state를props화(state) {
 //   // console.log(state, "<<<State");

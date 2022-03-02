@@ -1,8 +1,12 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Basket = () => {
+  const product = useSelector((store) => store.ProductReducer);
+  console.log(product, "<<<");
+
   return (
     <>
       <h1>장바구니</h1>
@@ -10,20 +14,25 @@ const Basket = () => {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>주문번호</th>
+              <th>상품명</th>
+              <th>가격</th>
+              <th>수량</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
+            {product.map((item, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>{item.id}</td>
+                  <td>{item.name}</td>
+                  <td>{item.quan}</td>
+                  <td>{item.quan}</td>
+                </tr>
+              );
+            })}
+            {/* 
+            {/* <tr>
               <td>2</td>
               <td>Jacob</td>
               <td>Thornton</td>
@@ -33,7 +42,7 @@ const Basket = () => {
               <td>3</td>
               <td colSpan={2}>Larry the Bird</td>
               <td>@twitter</td>
-            </tr>
+            </tr> */}
           </tbody>
         </Table>
       </Container>

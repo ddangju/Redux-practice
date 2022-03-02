@@ -13,7 +13,9 @@ import rootReducer from "./redux/index-redux";
 // let store = createStore(reducer);
 
 function App() {
+  //state보관함을 생성해서 store에 할당한다.
   const store = createStore(rootReducer);
+  // console.log(store.getState());
 
   return (
     <BrowserRouter>
