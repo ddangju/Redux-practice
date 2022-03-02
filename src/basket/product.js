@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 
-const Product = (props) => {
-  const [price, setPrice] = useState(0);
+const Product = () => {
+  // const [price, setPrice] = useState(0);
   let navigate = useNavigate();
+  const product = useSelector((store) => store.ProductReducer);
+  const product2 = useSelector((store) => store.ProductReducer2);
+  const dispatch = useDispatch();
+  console.log(product2, "<product2");
 
   const goBasket = () => {
     navigate("/basket");
   };
 
-  const handleClick = (e) => {
-    ///클릭해서 들어온 버튼의 수량을 플러스
-    console.log(e);
-    setPrice((prev) => prev + 1);
-  };
   return (
     <>
       <h1>상품</h1>
-      {props.state.map((item, idx) => {
+      {product.map((item, idx) => {
         return (
           <div key={idx}>
             <img
@@ -31,7 +31,7 @@ const Product = (props) => {
               </button> */}
               <button
                 onClick={() => {
-                  props.dispatch({
+                  dispatch({
                     type: { increment: "increment", id: item.id },
                   });
                 }}
@@ -40,7 +40,7 @@ const Product = (props) => {
               </button>
               <button
                 onClick={() => {
-                  props.dispatch({ type: "decrement" });
+                  dispatch({ type: "decrement" });
                 }}
               >
                 -
@@ -59,13 +59,13 @@ const Product = (props) => {
 ////넘어온 store를 props로 변환해주는 함수이다.
 //object를 리턴한다.
 
-function state를props화(state) {
-  // console.log(state, "<<<State");
+// function state를props화(state) {
+//   // console.log(state, "<<<State");
 
-  return {
-    state: state,
-  };
-}
-export default connect(state를props화)(Product);
+//   return {
+//     state: state,
+//   };
+// }
+// export default connect(state를props화)(Product);
 
-// export default Product;
+export default Product;

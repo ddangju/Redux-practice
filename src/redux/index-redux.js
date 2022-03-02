@@ -3,9 +3,14 @@
 
 import { combineReducers } from "redux";
 import counter from "./counter-redux";
+import { ProductReducer, ProductReducer2 } from "./product-redux";
 
 const rootReducer = combineReducers({
   counter: counter,
+  ProductReducer: ProductReducer,
+  ProductReducer2: ProductReducer2,
+  // product: product,
+  // product2: product2,
 });
 
 export default rootReducer;
