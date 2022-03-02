@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Product = () => {
+const Product = (props) => {
   const [price, setPrice] = useState(0);
   let navigate = useNavigate();
 
@@ -21,16 +21,22 @@ const Product = () => {
         <button onClick={handleClick}>+</button>
         <button>-</button>
       </div>
-      <h2>{price}</h2>
+      <h2>{props.state[0].quan}</h2>
       <button onClick={goBasket}>카트바로가기</button>
     </>
   );
 };
 
+////넘어온 store를 props로 변환해주는 함수이다.
+//object를 리턴한다.
+
 function state를props화(state) {
+  console.log(state, "<<<State");
+
   return {
     state: state,
   };
 }
+export default connect(state를props화)(Product);
 
-export default Product;
+// export default Product;
